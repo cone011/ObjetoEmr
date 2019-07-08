@@ -38,6 +38,7 @@ Public Function GetAll() As Productos
 						Obj.PrecioCosto = sqlReader("pcosto").ToString()
 						list.Add(Obj)
 					End While
+					sqlConn.Close()
 				Catch ex As MySQLException
 					Throw
 				End Try
@@ -81,6 +82,7 @@ End Function
 						Obj.PrecioUnitario = sqlReader("punit").ToString()
 						Obj.PrecioCosto = sqlReader("pcosto").ToString()
 					End While
+					sqlConn.Close()
 				Catch ex As MySQLException
 					Throw
 				End Try

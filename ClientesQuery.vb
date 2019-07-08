@@ -15,6 +15,18 @@ Public Class ClientesQuery
 		End Set
 	End Property
 	
+	Protected _idClientes As Integer 
+	
+	Public Property idClientes() As Integer 
+		Get
+			Return _idClientes
+		End Get
+		
+		Set(ByVal value As Integer)
+			_idClientes = value
+		End Set
+	End Property
+	
 	Protected _ObjetoClientes As Clientes 
 	
 	Public Property ObjetoClientes() As Clientes
