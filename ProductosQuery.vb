@@ -14,6 +14,18 @@ Public Class ProductosQuery
 		End Set
 	End Property
 	
+	Protected _idProductos As Integer 
+	
+	Public Property idProductos() As Integer
+		Get
+			Return _idProductos
+		End Get
+		
+		Set(ByVal value As Integer)
+			_idProductos = value
+		End Set
+	End Property
+	
 	Public ReadOnly Property GetAll() As String 
 		Get
 			Dim resultado As String = String.Empty
@@ -30,7 +42,7 @@ Public Class ProductosQuery
 		Get
 			Dim resultado As String = String.Empty
 			Try
-				resultado = "SELECT * FROM producto WHERE idreg = "+ObjetoProductos.idProductos
+				resultado = "SELECT * FROM producto WHERE idreg = "+idProductos
 			Catch
 				Throw
 			End Try
