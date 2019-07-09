@@ -102,3 +102,68 @@ Private Sub BindGrid()
         End Using
     End Using
 End Sub
+
+''--------------------------------------------------------------------------------------------------------
+ Dim MysqlConn As MySqlConnection
+
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        MysqlConn = New MySqlConnection
+        MysqlConn.ConnectionString =
+       "server=localhost;userid=root;password=root;database=database"
+
+        Try
+            MysqlConn.Open()
+            MessageBox.Show("Connection Successful")
+            MysqlConn.Close()
+
+        Catch ex As MySqlException
+            MessageBox.Show(ex.Message)
+        Finally
+            MysqlConn.Dispose()
+
+        End Try
+
+    End Sub
+''-----------------------------------------------------------------------------------------------------------
+
+Imports MySql.Data.MySqlClient
+Imports System
+Imports System.IO
+Public Class Form1
+    Public dbconn As New MySqlConnection
+    Public sqlQuery As String
+    Public SQLcmd As MySqlCommand
+    Public sqlQuery2 As String
+    Public dbconn2 As New MySqlConnection
+    Public SQLcmd2 As MySqlCommand
+    Public dbread As MySqlDataReader
+    Dim Ext As String
+    Dim CostAssing As Integer
+
+    Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
+        dbconn = New MySqlConnection("Data Source=localhost ; user id=root ; password=mysq1passw0rd ; database=calls")
+        dbconn2 = New MySqlConnection("Data Source=localhost ; user id=root ; password=mysq1passw0rd ; database=calls")
+        Try
+            dbconn.Open()
+            dbconn2.Open()
+	    'First Query for getting the Extension and CostAssing
+            sqlQuery = "SELECT Ext,CostAssing,CostAct FROM estruc "
+            SQLcmd = New MySqlCommand(sqlQuery, dbconn)
+            dbread = SQLcmd.ExecuteReader
+            While dbread.Read()
+                Ext = dbread.Item("Ext")
+                CostAssing = dbread.Item("CostAssing")
+		'Second Query Update CostAct with CostAssing Value
+                sqlQuery2 = "UPDATE estruc SET CostAct = '" & CostAssing & "'  WHERE Ext = '" & Ext & "'"
+                SQLcmd2 = New MySqlCommand(sqlQuery2, dbconn2)
+                SQLcmd2.ExecuteNonQuery()
+            End While
+        Catch ex As Exception
+            MsgBox("Error 1 is :" & ex.Message)
+        End Try
+        dbread.Close()
+        dbconn.Close()
+        dbconn2.Close()
+    End Sub
+
+End Class 
