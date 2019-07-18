@@ -1,5 +1,3 @@
-
-
 Public Class ProductosQuery 
 	
 	Protected _ObjetoProductos As Productos 
@@ -42,11 +40,39 @@ Public Class ProductosQuery
 		Get
 			Dim resultado As String = String.Empty
 			Try
-				resultado = "SELECT * FROM producto WHERE idreg = "+idProductos
+				resultado = "SELECT * FROM producto WHERE idreg = @idProducto"   
 			Catch
 				Throw
 			End Try
 			Return resultado
 		End Get
 	End Property
+
+    Public ReadOnly Property SaveProducto() As String 
+        Dim resultado As String = String.Empty
+        Try
+            resultado = "
+                            INSERT INTO prodcuto
+                                                (
+                                                    codpro,
+                                                    descri,
+                                                    punit,
+                                                    pcosto,
+                                                    ivaprocent,
+                                                    exist1
+                                                )
+                                         VALUES(
+                                                    @CodigoProducto,
+                                                    @DescripcionProducto,
+                                                    @PrecioUnitario,
+                                                    @PrecioCosto,
+                                                    @IvaProcentajeProducto,
+                                                    @ExistenciaProducto
+                                               )
+                        "
+        Catch
+            Throw
+        End Try
+        Return resultado
+    End Property
 End Class
