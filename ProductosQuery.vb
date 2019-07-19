@@ -23,6 +23,8 @@ Public Class ProductosQuery
 			_idProductos = value
 		End Set
 	End Property
+
+	Public Property isNew As Boolean = Falase
 	
 	Public ReadOnly Property GetAll() As String 
 		Get
@@ -32,6 +34,18 @@ Public Class ProductosQuery
 			Catch
 				Throw
 			End Try
+			Return resultado
+		End Get
+	End Property
+
+	Public ReadOnly Property GetAllFacturacion() As String 
+		Get 
+			Dim resultado As String = String.Empty
+			Try
+				resultado = "SELECT codpro, descri, punit FROM producto"
+			Catch
+				Throw
+			End Try	
 			Return resultado
 		End Get
 	End Property
@@ -51,7 +65,8 @@ Public Class ProductosQuery
     Public ReadOnly Property SaveProducto() As String 
         Dim resultado As String = String.Empty
         Try
-            resultado = "
+			If isNew Then
+				 resultado = "
                             INSERT INTO prodcuto
                                                 (
                                                     codpro,
@@ -70,6 +85,18 @@ Public Class ProductosQuery
                                                     @ExistenciaProducto
                                                )
                         "
+			Else 
+					resultado = "UPDATE producto SET codpro = @CodigoProducto,
+													 descri = @DescripcionProducto,
+													 punit  = @PrecioUnitario,
+													 pcosto = @PrecioCosto,
+													 ivaprocent = @IvaProcentajeProducto,
+													 exis1 = @ExistenciaProducto
+									    where idreg = @idProducto
+								
+								"
+			End if
+           
         Catch
             Throw
         End Try

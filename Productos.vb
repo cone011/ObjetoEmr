@@ -1,4 +1,5 @@
-﻿
+
+
 ''' <summary>
 ''' Clase de Productos JC 2019/07/06
 ''' </summary>
@@ -59,6 +60,16 @@ Public Class Productos
         End Set
     End Property
 
-
+    Public ReadOnly Property LeyendaProducto As String 
+        Get 
+            Dim Resultado As String = String.Empty 
+            Try
+                Resultado = CodigoProductos + " - " + DescripcionProducto + "  -  " + PrecioUnitario
+            Catch 
+                Throw
+            End Try
+            Return Resultado
+        End Get
+    End Property
 
 End Class

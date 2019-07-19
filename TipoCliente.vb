@@ -1,11 +1,8 @@
-﻿
-''' <summary>
-''' Clase de Tipo Cliente JC 2019/07/06
-''' </summary>
-Public Class TipoCliente
 
-    Protected _idTipoCliente As Integer
+public class TipoCliente
 
+    Protected _idTipoCliente As interger  
+    
     Public Property idTipoCliente() As Integer
         Get
             Return _idTipoCliente
@@ -15,71 +12,71 @@ Public Class TipoCliente
         End Set
     End Property
 
-    Protected _CodigoTipoCliente As String
+    Protected _CodigoTipoCliente As String 
 
-    Public Property CodigoTipoCliente() As String
+    Public Property CodigoTipoCliente() As String 
         Get
             Return _CodigoTipoCliente
         End Get
-        Set(value As String)
+        Set(ByVal value As String)
             _CodigoTipoCliente = value
         End Set
     End Property
 
-    Protected _DescripcionTipoCliente As String
-
-    Public Property DescripcionTipoCliente() As String
-        Get
+    Private _DescripcionTipoCliente as String 
+    
+    Public Property DescripcionTipoCliente() as String
+        Get 
             Return _DescripcionTipoCliente
-        End Get
-        Set(ByVal value As String)
+        end Get
+        Set(ByVal value as String)
             _DescripcionTipoCliente = value
         End Set
     End Property
 
-    Protected _FechaAgregado As Date
+    Protected _FechaAgregado as Date 
 
-    Public Property FechaAgregado() As Date
+    Public Property FechaAgregado() as Date 
         Get
             Return _FechaAgregado
         End Get
-        Set(ByVal value As Date)
+        Set(ByVal value as Date)
             _FechaAgregado = value
         End Set
     End Property
 
-    Protected _UsuarioAgregado As String
+    Protected _UsuarioAgregado as String
 
-    Public Property UsuarioAgregado() As String
+    Public Property UsuarioAgregado() as String
         Get
             Return _UsuarioAgregado
         End Get
-        Set(ByVal value As String)
+        Set(ByVal value as String)
             _UsuarioAgregado = value
         End Set
     End Property
 
-    Protected _FechaModificacion As Date
+    Protected _FechaModificacion as Date
 
-    Public Property FechaModificacion() As Date
+    Public Property FechaModificacion() as Date 
         Get
             Return _FechaModificacion
-        End Get
-        Set(ByVal value As Date)
+        End Get 
+        Set(ByVal value as Date)
             _FechaModificacion = value
         End Set
     End Property
 
 
-    Protected _UsuarioModificacion As String
+    Protected _UsuarioModificacion as String
 
-    Public Property UsuarioModificacion() As String
+    Public Property UsuarioModificacion() as String
         Get
             Return _UsuarioModificacion
         End Get
-        Set(ByVal value As String)
+        Set(ByVal value as String)
             _UsuarioModificacion = value
         End Set
     End Property
-
-End Class
+    
+end class
