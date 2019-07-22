@@ -23,6 +23,28 @@ Public Class CuentasCorrientesClientes
 		End Set
 	End Property
 	
+	Protected _DescripcionCliente As String 
+	
+	Public Property DescripcionCliente() As String 
+		Get
+			Return _DescripcionCliente
+		End Get
+		Set(ByVal value As String)
+			_DescripcionCliente = value
+		End Set
+	End Property
+	
+	Protected _RazonSocialCliente As String 
+	
+	Public Property RazonSocialCliente() As String 
+		Get
+			Return _RazonSocialCliente
+		End Get
+		Set(ByVal value As String)
+			_RazonSocialCliente = value
+		End Set
+	End Property
+	
 	Protected _NumeroDocumento As Integer 
 	
 	Public Property NumeroDocumento() As Integer 
@@ -97,6 +119,17 @@ Public Class CuentasCorrientesClientes
 		End Get
 		Set(ByVal value As Integer)
 			_SaldoDocumento = value
+		End Set
+	End Property
+	
+	Protected _NumeroFactura As Integer 
+	
+	Public Property NumeroFactura() As Integer 
+		Get
+			Return _NumeroFactura
+		End Get
+		Set(ByVal value As Integer)
+			_NumeroFactura = value
 		End Set
 	End Property
 End Class
